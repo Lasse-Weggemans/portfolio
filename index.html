@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Basis Tags -->
+  <title>Lasse Weggemans — Junior Web Developer & Software Development Student Gemert</title>
+  <meta name="description" content="Lasse Weggemans is een gedreven Software Development student in opleiding en aankomend Web Developer in Gemert. Beschikbaar voor stages en webprojecten.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Lasse Weggemans">
+  <link rel="canonical" href="https://www.lasseweggemans.nl/">
+
+  <!-- Open Graph / LinkedIn / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.lasseweggemans.nl/">
+  <meta property="og:title" content="Lasse Weggemans — Junior Web Developer portfolio">
+  <meta property="og:description" content="Software Development student in opleiding uit Gemert met een passie voor het bouwen van moderne, functionele websites. Bekijk mijn werk!">
+  <meta property="og:image" content="https://www.lasseweggemans.nl/jouw-social-sharing-foto.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.lasseweggemans.nl/">
+  <meta property="twitter:title" content="Lasse Weggemans — Junior Web Developer portfolio">
+  <meta property="twitter:description" content="Software Development student in opleiding uit Gemert met een passie voor het bouwen van moderne, functionele websites.">
+  <meta property="twitter:image" content="https://www.lasseweggemans.nl/jouw-social-sharing-foto.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+
+  <style>
+    *, *::before, *::after { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+
+    :root {
+      --bg: #0d0d0f;
+      --bg2: #13131a;
+      --bg3: #1a1a24;
+      --border: rgba(255,255,255,0.08);
+      --border2: rgba(255,255,255,0.14);
+      --fg: #f0ede8;
+      --muted: #8a8a9a;
+      --purple: #7c6fcd;
+      --purple-light: #a99ef0;
+      --purple-dim: rgba(124,111,205,0.15);
+      --green: #22c55e;
+      --sans: 'Inter', system-ui, sans-serif;
+    }
+
+    html { 
+      scroll-behavior: smooth; 
+    }
+    
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--fg);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 2px; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.25rem 4rem;
+      background: rgba(13,13,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+    nav.scrolled { border-color: var(--border); }
+    .nav-logo {
+      font-size: 1rem; font-weight: 700; font-style: italic;
+      text-decoration: none; color: var(--purple-light);
+      letter-spacing: 0.01em;
+    }
+    .nav-links { display: flex; gap: 0.25rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      color: var(--muted);
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover { color: var(--fg); background: var(--bg3); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      padding: 7rem 4rem 4rem;
+      gap: 4rem;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.78rem; font-weight: 500;
+      color: var(--purple-light);
+      background: var(--purple-dim);
+      border: 1px solid rgba(124,111,205,0.3);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 2rem;
+    }
+    .badge-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 6px var(--green);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; } 50% { opacity: 0.4; }
+    }
+    .hero-greeting { font-size: 1.1rem; font-weight: 400; color: var(--muted); margin-bottom: 0.5rem; }
+    h1 {
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.4rem;
+    }
+    .h1-accent { color: var(--purple-light); }
+    .hero-role {
+      font-size: 1.1rem; font-weight: 400;
+      color: var(--muted); margin-bottom: 1.5rem;
+    }
+    .hero-role span {
+      color: var(--fg); font-weight: 500;
+      border-bottom: 1px solid var(--purple);
+    }
+    .hero-desc { font-size: 0.95rem; color: var(--muted); max-width: 420px; line-height: 1.8; margin-bottom: 2.5rem; }
+    .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn {
+      font-family: var(--sans);
+      font-size: 0.85rem; font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      border: none; cursor: pointer;
+      transition: transform 0.15s, opacity 0.2s;
+    }
+    .btn:hover { transform: translateY(-1px); opacity: 0.88; }
+    .btn-primary { background: var(--purple); color: #fff; }
+    .btn-outline { background: transparent; color: var(--fg); border: 1px solid var(--border2); }
+    .btn-outline:hover { background: var(--bg3); }
+
+    /* HERO FOTO */
+    .hero-foto-wrap {
+      display: flex; align-items: center; justify-content: flex-end;
+    }
+    .hero-foto {
+      width: 100%; max-width: 360px;
+      aspect-ratio: 3/4;
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .hero-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-foto-ph {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 1rem; color: var(--muted);
+    }
+    .hero-foto-ph svg { opacity: 0.3; }
+    .hero-foto-ph span { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+    /* SECTION BASE */
+    section {
+      padding: 6rem 4rem;
+      border-top: 1px solid var(--border);
+    }
+    .section-tag {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--purple-light);
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700; letter-spacing: -0.02em;
+      line-height: 1.15; margin-bottom: 1rem;
+    }
+    .section-sub { font-size: 0.95rem; color: var(--muted); max-width: 520px; margin-bottom: 3.5rem; }
+
+    /* VAARDIGHEDEN */
+    #vaardigheden { background: var(--bg2); }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .skill-card {
+      background: var(--bg2);
+      padding: 1.75rem 2rem;
+      transition: background 0.2s;
+    }
+    .skill-card:hover { background: var(--bg3); }
+    .skill-card-icon {
+      font-size: 1.5rem; margin-bottom: 0.75rem;
+    }
+    .skill-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .skill-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+    /* PROJECTEN */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+    .project-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .project-card:hover { border-color: var(--purple); transform: translateY(-3px); }
+    .project-thumb {
+      width: 100%; aspect-ratio: 16/9;
+      background: var(--bg3);
+      border-radius: 8px;
+      margin-bottom: 1.25rem;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .project-thumb svg { opacity: 0.18; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+    .tag {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em;
+      padding: 0.25rem 0.65rem; border-radius: 4px;
+      background: var(--purple-dim);
+      color: var(--purple-light);
+      border: 1px solid rgba(124,111,205,0.2);
+    }
+    .project-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .project-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+    .project-link {
+      margin-top: 1.25rem;
+      font-size: 0.8rem; font-weight: 600;
+      color: var(--purple-light);
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+
+    /* OVER */
+    #over { background: var(--bg2); }
+    .over-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 5rem; align-items: start;
+    }
+    .over-foto {
+      aspect-ratio: 3/4;
+      background: var(--bg3);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: 0.8rem;
+      overflow: hidden;
+    }
+    .over-foto img { width: 100%; height: 100%; object-fit: cover; }
+    .over-text p { font-size: 0.95rem; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.8; }
+    .over-text p strong { color: var(--fg); font-weight: 500; }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+    .chip {
+      font-size: 0.78rem; font-weight: 500;
+      border: 1px solid var(--border2);
+      color: var(--muted);
+      padding: 0.3rem 0.8rem; border-radius: 6px;
+      background: var(--bg3);
+    }
+
+    /* CONTACT */
+    #contact {
+      text-align: center;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+    }
+    .contact-inner { max-width: 580px; margin: 0 auto; }
+    .contact-inner h2 { font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 1rem; }
+    .contact-inner p { color: var(--muted); font-size: 0.95rem; margin-bottom: 2.5rem; }
+    .contact-email {
+      display: inline-block;
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-weight: 600;
+      color: var(--purple-light);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(169,158,240,0.4);
+      padding-bottom: 3px;
+      transition: border-color 0.2s;
+    }
+    .contact-email:hover { border-color: var(--purple-light); }
+    .socials { margin-top: 3rem; display: flex; justify-content: center; gap: 1rem; }
+    .social-btn {
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; text-decoration: none;
+      color: var(--muted);
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg2);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .social-btn:hover { color: var(--fg); border-color: var(--border2); }
+
+    /* FOOTER */
+    footer {
+      padding: 1.5rem 4rem;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between;
+      font-size: 0.78rem; color: var(--muted);
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 800px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; gap: 2.5rem; }
+      .hero-foto-wrap { justify-content: center; }
+      .hero-foto { max-width: 260px; aspect-ratio: 1/1; border-radius: 50%; }
+      section { padding: 4rem 1.5rem; }
+      .over-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      footer { flex-direction: column; gap: 0.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <a href="#" class="nav-logo" aria-label="Lasse Weggemans Homepage">&lt;LW /&gt;</a>
+    <ul class="nav-links">
+      <li><a href="#vaardigheden">Vaardigheden</a></li>
+      <li><a href="#projecten">Projecten</a></li>
+      <li><a href="#over">Over</a></li>
+      <li><a href="#contact" style="color:var(--purple-light)">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- HERO SECTION -->
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="badge reveal"><span class="badge-dot"></span> Open voor stages &amp; projecten in Gemert</div>
+        <p class="hero-greeting reveal" style="transition-delay:.05s">Hallo, ik ben</p>
+        <h1 class="reveal" style="transition-delay:.1s">Lasse<br><span class="h1-accent">Weggemans</span></h1>
+        <p class="hero-role reveal" style="transition-delay:.15s">Aankomend <span>Web Developer &amp; Software Developer</span></p>
+        <p class="hero-desc reveal" style="transition-delay:.2s">Software Development student in opleiding uit Gemert met een passie voor het bouwen van mooie, functionele websites en webapplicaties. Elke dag een stap dichter bij mijn doel.</p>
+        <div class="hero-btns reveal" style="transition-delay:.25s">
+          <a href="#projecten" class="btn btn-primary">Bekijk mijn werk</a>
+          <a href="#contact" class="btn btn-outline">Neem contact op</a>
+        </div>
+      </div>
+      <div class="hero-foto-wrap reveal" style="transition-delay:.2s">
+        <div class="hero-foto">
+          <img src="assets/gala.jpg" alt="Portretfoto van Lasse Weggemans">
+          <div class="hero-foto-ph">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+              <circle cx="28" cy="21" r="10" stroke="#a99ef0" stroke-width="1.5"/>
+              <path d="M7 49c0-11.598 9.402-21 21-21s21 9.402 21 21" stroke="#a99ef0" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span>Jouw foto hier</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- VAARDIGHEDEN -->
+    <section id="vaardigheden" aria-labelledby="vaardigheden-title">
+      <p class="section-tag reveal">Wat ik kan</p>
+      <h2 id="vaardigheden-title" class="reveal" style="transition-delay:.05s">Vaardigheden &amp; tools</h2>
+      <p class="section-sub reveal" style="transition-delay:.1s">De technologieën en software development tools waar ik dagelijks mee werk en verder in wil groeien.</p>
+      
+      <div class="skills-grid">
+        <article class="skill-card reveal">
+          <div class="skill-card-icon" aria-hidden="true">🌐</div>
+          <h3>Frontend Development</h3>
+          <p>HTML, CSS, JavaScript — bouwen van responsive en intuïtieve gebruikersinterfaces.</p>
+        </article>
+        <article class="skill-card reveal" style="transition-delay:.05s">
+          <div class="skill-card-icon" aria-hidden="true">⚙️</div>
+          <h3>Backend Development</h3>
+          <p>PHP, SQL — het ontwerpen van databases en de logica achter de schermen.</p>
+        </article>
+        <article class="skill-card reveal" style="transition-delay:.1s">
+          <div class="skill-card-icon" aria-hidden="true">🤖</div>
+          <h3>Artificial Intelligence</h3>
+          <p>Keuzedeel AI — toepassen van slimme technologieën en AI-concepten binnen moderne applicaties.</p>
+        </article>
+        <article class="skill-card reveal" style="transition-delay:.15s">
+          <div class="skill-card-icon" aria-hidden="true">🔧</div>
+          <h3>Development Tools</h3>
+          <p>Git, VS Code — georganiseerd, versiebeheerd en efficiënt werken aan code.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECTEN -->
+    <section id="projecten" aria-labelledby="projecten-title">
+      <p class="section-tag reveal">Mijn werk</p>
+      <h2 id="projecten-title" class="reveal" style="transition-delay:.05s">Geselecteerde Software Projecten</h2>
+      <p class="section-sub reveal" style="transition-delay:.1s">Een greep uit de webdevelopment projecten waar ik aan heb gewerkt tijdens mijn studie en vrije tijd.</p>
+      
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card reveal">
+          <div class="project-thumb">
+            <img style="width: 100%; height: 100%;" src="assets/project1.png" alt="Schermafbeelding van De Slimme Offerte-tool interface">
+          </div>
+          <div class="project-tags">
+            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span><span class="tag">PHP</span>
+          </div>
+          <h3>De Slimme Offerte-tool</h3>
+          <p>Een interactieve vragenlijst waarbij bezoekers stap voor stap hun wensen aangeven via afbeeldingen en schuifbalken. Aan het einde krijgen ze direct een prijsindicatie — het bedrijf ontvangt een gekwalificeerde lead. Combineert multi-step UX, formulierlogica en e-mail integratie in één project dat bedrijven écht willen gebruiken.</p>
+          <a href="html&php/tool.php" class="project-link" aria-label="Bekijk De Slimme Offerte-tool details">
+            Bekijk project <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card reveal">
+          <div class="project-thumb">
+            <img style="width: 100%; height: 100%;" src="assets/project2.png" alt="Schermafbeelding van NØR interface">
+          </div>
+          <div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
+          <h3>NØR</h3>
+          <p>Ik kreeg een bericht van iemand die ik goed ken die een huisstijl zocht. Waar ik vervolgens op verder ben gegaan en ik ben tot dit resultaat gekomen.</p>
+          <a href="html&php/NØR.php" class="project-link" aria-label="Bekijk NØR details">
+            Bekijk project <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card reveal">
+          <div class="project-thumb">
+            <img style="width: 100%; height: 100%;" src="assets/project3.png" alt="Schermafbeelding van Tetris interface">
+          </div>
+          <div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span><span class="tag">PHP</span></div>
+          <h3>Tetris</h3>
+          <p>Een browser game gebouwd vanaf nul — geen library, geen framework. Laat zien dat je begrijpt hoe een game loop werkt, hoe je collision detection schrijft, en hoe je state bijhoudt. Het soort project waarbij je meer leert in een weekend dan in een maand tutorials kijken.</p>
+          <a href="html&php/game.php" class="project-link" aria-label="Bekijk Tetris details">
+            Bekijk project <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- OVER ME -->
+    <section id="over" aria-labelledby="over-title">
+      <p class="section-tag reveal">Over mij</p>
+      <div class="over-grid">
+        <div class="over-foto reveal">
+          <img src="assets/gala.jpg" alt="Lasse Weggemans">
+          <span>Foto</span>
+        </div>
+        <div class="over-text">
+          <h2 id="over-title" class="reveal" style="transition-delay:.05s">Passie voor<br>het web</h2>
+          <div class="reveal" style="transition-delay:.1s">
+            <p>Ik ben <strong>Lasse Weggemans</strong>, een student Software Development in opleiding die woont in Gemert. Websites bouwen is voor mij meer dan een studie. Het is iets waar ik elke dag met plezier mee bezig ben.</p>
+            <p>Ik geloof dat goede software zowel technisch solide als prettig in gebruik moet zijn. Ik leer snel, werk graag samen en ben altijd op zoek naar manieren om beter te worden in frontend en backend webdevelopment. Daarnaast verbreed ik momenteel mijn kennis met het keuzedeel Artificial Intelligence.</p>
+            <p>Op dit moment ben ik beschikbaar voor een <strong>stage in de regio Gemert</strong> of een uitdagend freelance project. Heb jij een plek vrij binnen je development team? Stuur me zeker een bericht!</p>
+          </div>
+          <div class="chip-row reveal" style="transition-delay:.15s">
+            <span class="chip">Gemert</span>
+            <span class="chip">Leeftijd: <span id="leeftijd"></span> jaar</span>
+            <span class="chip">In opleiding</span>
+            <span class="chip">Keuzedeel AI</span>
+            <span class="chip">Nederlands / Engels</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="contact-inner">
+        <p class="section-tag reveal">Samenwerken?</p>
+        <h2 id="contact-title" class="reveal" style="transition-delay:.05s">Laten we iets<br>moois bouwen.</h2>
+        <p class="reveal" style="transition-delay:.1s">Een project, stageplek of gewoon een vraag? Ik reageer binnen één werkdag.</p>
+        <a href="mailto:lweggemans@outlook.com" class="contact-email reveal" style="transition-delay:.15s">lweggemans@outlook.com</a>
+        <div class="socials reveal" style="transition-delay:.2s">
+          <a href="https://www.linkedin.com/in/lasse-weggemans-00a0ab395" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Bekijk het LinkedIn profiel van Lasse Weggemans">LinkedIn</a>
+          <a href="https://github.com/Lasse-Weggemans" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Bekijk het GitHub profiel van Lasse Weggemans">GitHub</a>
+          <a href="tel:06636485810" class="social-btn" aria-label="Bel Lasse Weggemans op 06 63 64 85 810">Bellen</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>&copy; 2026 Lasse Weggemans</span>
+    <span>Gemaakt met slechte humor — Gemert</span>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Leeftijd automatisch berekenen
+    function berekenLeeftijd() {
+      const vandaag = new Date();
+      const geboorteDatum = new Date(2008, 11, 12); // December is maand 11 (0-11)
+      
+      let leeftijd = vandaag.getFullYear() - geboorteDatum.getFullYear();
+      const maandVerschil = vandaag.getMonth() - geboorteDatum.getMonth();
+      const dagVerschil = vandaag.getDate() - geboorteDatum.getDate();
+
+      if (maandVerschil < 0 || (maandVerschil === 0 && dagVerschil < 0)) {
+        leeftijd--;
+      }
+      document.getElementById("leeftijd").textContent = leeftijd;
+    }
+
+    // Scroll styling nav bar
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 20));
+
+    // Intersection Observer voor Reveal animaties
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { 
+        if (e.isIntersecting) { 
+          e.target.classList.add('visible'); 
+          io.unobserve(e.target); 
+        } 
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Smooth scroll voor interne links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) { 
+          e.preventDefault(); 
+          t.scrollIntoView({ behavior: 'smooth' }); 
+        }
+      });
+    });
+
+    // Start functies
+    berekenLeeftijd();
+  </script>
+</body>
+</html>
